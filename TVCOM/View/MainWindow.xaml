@@ -1,0 +1,89 @@
+﻿<Window x:Class="TVCOM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TVCOM.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1150"
+        Drop="Window_Drop" AllowDrop="True" ResizeMode="NoResize" WindowStyle="None" 
+        Background="Transparent" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png"
+        xmlns:viewmodel="clr-namespace:TVCOM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
+    <Grid>
+        <Border Background="#D00A0A" CornerRadius="10"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid MouseDown="Grid_MouseDown">
+                <Border  Background="#B00A0A" CornerRadius="10,10,0,0"/>
+                <Image HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="175" Source="\Resources\Images\logo.png" Height="40"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid Width="40" HorizontalAlignment="Right" x:Name="Menu" Height="300" VerticalAlignment="Top"  Margin="0,75,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border Background="#B00A0A" Height="300" CornerRadius="10,0,0,10" Cursor="Hand" MouseDown="Border_MouseDown">
+                            <Border Background="#77FFFFFF" Height="200" Width="5" Margin="0,0,10,0"/>
+                        </Border>
+                        <Border Grid.Column="1" Background="#B00A0A" Height="300">
+                            <StackPanel VerticalAlignment="Center">
+                                <Button Height="60" Width="240" Margin="0,0,0,20" Content="Вывести общий отчёт"/>
+                                <Button Height="60" Width="240" Content="Вывести личный отчёт"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Width="1025" Height="400" HorizontalAlignment="Left" Margin="50,0,0,0" x:Name="SV">
+                            <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Controls}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:Control FileName="{Binding}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        <StackPanel Orientation="Horizontal" Margin="40,0,0,0" Grid.Row="2" VerticalAlignment="Center">
+                            <ComboBox Name="Day" Height="30" Width="75" Style="{DynamicResource Combo}" Text="{Binding Day}"/>
+                            <ComboBox Name="Month" Height="30" Width="150" Margin="30,0,0,0" SelectionChanged="Month_SelectionChanged" Style="{DynamicResource Combo}" 
+               SelectedValuePath="Tag" SelectedValue="{Binding SelectedMonth}">
+                                <ComboBoxItem Content="Январь" Tag="1"/>
+                                <ComboBoxItem Content="Февраль" Tag="2"/>
+                                <ComboBoxItem Content="Март" Tag="3"/>
+                                <ComboBoxItem Content="Апрель" Tag="4"/>
+                                <ComboBoxItem Content="Май" Tag="5"/>
+                                <ComboBoxItem Content="Июнь" Tag="6"/>
+                                <ComboBoxItem Content="Июль" Tag="7"/>
+                                <ComboBoxItem Content="Август" Tag="8"/>
+                                <ComboBoxItem Content="Сентябрь" Tag="9"/>
+                                <ComboBoxItem Content="Октябрь" Tag="10"/>
+                                <ComboBoxItem Content="Ноябрь" Tag="11"/>
+                                <ComboBoxItem Content="Декабрь" Tag="12"/>
+                            </ComboBox>
+                            <ComboBox x:Name="Year" Style="{DynamicResource Combo}" Margin="30,0,0,0" Width="75" Text="{Binding Year}">
+                                <ComboBoxItem Content="2024"/>
+                                <ComboBoxItem Content="2025"/>
+                                <ComboBoxItem Content="2026"/>
+                                <ComboBoxItem Content="2027"/>
+                                <ComboBoxItem Content="2028"/>
+                                <ComboBoxItem Content="2029"/>
+                                <ComboBoxItem Content="2030"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Content="Заполнить данные" Height="60" Width="275" Grid.Row="2" HorizontalAlignment="Right" Command="{Binding InsertCommand}" Margin="0,0,60,0"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
