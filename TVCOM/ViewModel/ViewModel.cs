@@ -54,6 +54,8 @@ namespace TVCOM.ViewModel
         public IReportService _reportService;
         public IRegistService _AddUserService;
         public ICommand LoginCommand { get; set; }
+        public ICommand ReportOpenCommand { get; set; }
+
         public string ErrorMessage { get; set; }
         public ICommand OpenRegisterCommand { get; set; }
         public ICommand RegistCommand { get; set; }
@@ -152,6 +154,26 @@ namespace TVCOM.ViewModel
                 OnPropertyChanged("Year");
             }
         }
+        private int _startyear;
+        public int StartYear
+        {
+            get { return _startyear; }
+            set
+            {
+                _startyear = value;
+                OnPropertyChanged("StartYear");
+            }
+        }
+        private int _finyear;
+        public int FinYear
+        {
+            get { return _finyear; }
+            set
+            {
+                _finyear = value;
+                OnPropertyChanged("FinYear");
+            }
+        }
 
         private int _selectedMonth;
         public int SelectedMonth
@@ -160,6 +182,24 @@ namespace TVCOM.ViewModel
             set
             {
                 _selectedMonth = value;
+            }
+        }
+        private int _selectedStartMonth;
+        public int SelectedStartMonth
+        {
+            get { return _selectedStartMonth; }
+            set
+            {
+                _selectedStartMonth = value;
+            }
+        }
+        private int _selectedFinMonth;
+        public int SelectedFinMonth
+        {
+            get { return _selectedFinMonth; }
+            set
+            {
+                _selectedFinMonth = value;
             }
         }
 
@@ -171,6 +211,26 @@ namespace TVCOM.ViewModel
             {
                 _day = value;
                 OnPropertyChanged("Day");
+            }
+        }
+        private int _startday;
+        public int StartDay
+        {
+            get { return _startday; }
+            set
+            {
+                _startday = value;
+                OnPropertyChanged("StartDay");
+            }
+        }
+        private int _finday;
+        public int FinDay
+        {
+            get { return _finday; }
+            set
+            {
+                _finday = value;
+                OnPropertyChanged("FinDay");
             }
         }
         public MainWindowViewModel(ILoginService loginService, IRegistService registService, IProverkaService proverkaService, IInsertService insertService, IReportService reportService)
@@ -188,6 +248,7 @@ namespace TVCOM.ViewModel
             MinimizeCommand = new RelayCommand(Minimize);
             InsertCommand = new RelayCommand(Insert);
             ReportUserCommand = new RelayCommand(ReportUser);
+            ReportOpenCommand = new RelayCommand(OpenReportUser);
         }
         public void LoginUser(object obj)
         {
@@ -272,11 +333,21 @@ namespace TVCOM.ViewModel
             }
             MessageBox.Show("Ввод данных прошёл успешно!");
         }
+        private void OpenReportUser(object obj)
+        {
+            ReportUserWindow reportUserWindow = new ReportUserWindow();
+            reportUserWindow.Show();
+            Application.Current.Windows[0].Close();
+        }
         private void ReportUser(object obj) 
         {
-            DateTime start = new DateTime(Year, _selectedMonth, Day);
-            DateTime end = new DateTime(Year, _selectedMonth, Day);
+            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
             _reportService.ReportUser(ID_author, start, end);
+            MessageBox.Show("Данные сохранены!");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Application.Current.Windows[0].Close();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

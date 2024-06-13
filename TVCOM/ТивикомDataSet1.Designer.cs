@@ -20,9 +20,9 @@ namespace TVCOM {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("ТивикомDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ТивикомDataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ТивикомDataSet : global::System.Data.DataSet {
+    public partial class ТивикомDataSet1 : global::System.Data.DataSet {
         
         private ДолжностиDataTable tableДолжности;
         
@@ -52,11 +52,11 @@ namespace TVCOM {
         
         private global::System.Data.DataRelation relationFK__Работы__ID_трёхм__47DBAE45;
         
+        private global::System.Data.DataRelation relationFK__Работы__ID_Формы__45F365D3;
+        
         private global::System.Data.DataRelation relationFK__Работы__ID_худза__48CFD27E;
         
         private global::System.Data.DataRelation relationFK__Работы__ID_штраф__4AB81AF0;
-        
-        private global::System.Data.DataRelation relationFK__Работы__сумма__45F365D3;
         
         private global::System.Data.DataRelation relationFK__Сотрудник__ID_До__398D8EEE;
         
@@ -64,7 +64,7 @@ namespace TVCOM {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public ТивикомDataSet() {
+        public ТивикомDataSet1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -75,7 +75,7 @@ namespace TVCOM {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected ТивикомDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ТивикомDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -291,7 +291,7 @@ namespace TVCOM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ТивикомDataSet cln = ((ТивикомDataSet)(base.Clone()));
+            ТивикомDataSet1 cln = ((ТивикомDataSet1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -451,18 +451,18 @@ namespace TVCOM {
             this.relationFK__Работы__ID_автор__46E78A0C = this.Relations["FK__Работы__ID_автор__46E78A0C"];
             this.relationFK__Работы__ID_рекла__49C3F6B7 = this.Relations["FK__Работы__ID_рекла__49C3F6B7"];
             this.relationFK__Работы__ID_трёхм__47DBAE45 = this.Relations["FK__Работы__ID_трёхм__47DBAE45"];
+            this.relationFK__Работы__ID_Формы__45F365D3 = this.Relations["FK__Работы__ID_Формы__45F365D3"];
             this.relationFK__Работы__ID_худза__48CFD27E = this.Relations["FK__Работы__ID_худза__48CFD27E"];
             this.relationFK__Работы__ID_штраф__4AB81AF0 = this.Relations["FK__Работы__ID_штраф__4AB81AF0"];
-            this.relationFK__Работы__сумма__45F365D3 = this.Relations["FK__Работы__сумма__45F365D3"];
             this.relationFK__Сотрудник__ID_До__398D8EEE = this.Relations["FK__Сотрудник__ID_До__398D8EEE"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "ТивикомDataSet";
+            this.DataSetName = "ТивикомDataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/ТивикомDataSet.xsd";
+            this.Namespace = "http://tempuri.org/ТивикомDataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableДолжности = new ДолжностиDataTable();
@@ -499,6 +499,10 @@ namespace TVCOM {
                         this.tableтрёхмин.ID_трёхминColumn}, new global::System.Data.DataColumn[] {
                         this.tableРаботы.ID_трёхминColumn}, false);
             this.Relations.Add(this.relationFK__Работы__ID_трёхм__47DBAE45);
+            this.relationFK__Работы__ID_Формы__45F365D3 = new global::System.Data.DataRelation("FK__Работы__ID_Формы__45F365D3", new global::System.Data.DataColumn[] {
+                        this.tableФормы.ID_ФормыColumn}, new global::System.Data.DataColumn[] {
+                        this.tableРаботы.ID_формыColumn}, false);
+            this.Relations.Add(this.relationFK__Работы__ID_Формы__45F365D3);
             this.relationFK__Работы__ID_худза__48CFD27E = new global::System.Data.DataRelation("FK__Работы__ID_худза__48CFD27E", new global::System.Data.DataColumn[] {
                         this.tableхудзар.ID_худзарColumn}, new global::System.Data.DataColumn[] {
                         this.tableРаботы.ID_худзарColumn}, false);
@@ -507,10 +511,6 @@ namespace TVCOM {
                         this.tableштраф.ID_штрафColumn}, new global::System.Data.DataColumn[] {
                         this.tableРаботы.ID_штрафColumn}, false);
             this.Relations.Add(this.relationFK__Работы__ID_штраф__4AB81AF0);
-            this.relationFK__Работы__сумма__45F365D3 = new global::System.Data.DataRelation("FK__Работы__сумма__45F365D3", new global::System.Data.DataColumn[] {
-                        this.tableФормы.ID_ФормыColumn}, new global::System.Data.DataColumn[] {
-                        this.tableРаботы.ID_формыColumn}, false);
-            this.Relations.Add(this.relationFK__Работы__сумма__45F365D3);
             this.relationFK__Сотрудник__ID_До__398D8EEE = new global::System.Data.DataRelation("FK__Сотрудник__ID_До__398D8EEE", new global::System.Data.DataColumn[] {
                         this.tableДолжности.ID_ДолжностиColumn}, new global::System.Data.DataColumn[] {
                         this.tableСотрудники.ID_ДолжностиColumn}, false);
@@ -594,7 +594,7 @@ namespace TVCOM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ТивикомDataSet ds = new ТивикомDataSet();
+            ТивикомDataSet1 ds = new ТивикомDataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -905,7 +905,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1161,7 +1161,7 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public РаботыRow AddРаботыRow(string Название, ФормыRow parentФормыRowByFK__Работы__сумма__45F365D3, СотрудникиRow parentСотрудникиRowByFK__Работы__ID_автор__46E78A0C, System.DateTime Дата, double Балл, трёхминRow parentтрёхминRowByFK__Работы__ID_трёхм__47DBAE45, худзарRow parentхудзарRowByFK__Работы__ID_худза__48CFD27E, рекламаRow parentрекламаRowByFK__Работы__ID_рекла__49C3F6B7, штрафRow parentштрафRowByFK__Работы__ID_штраф__4AB81AF0, double колво_баллов, decimal сумма) {
+            public РаботыRow AddРаботыRow(string Название, ФормыRow parentФормыRowByFK__Работы__ID_Формы__45F365D3, СотрудникиRow parentСотрудникиRowByFK__Работы__ID_автор__46E78A0C, System.DateTime Дата, double Балл, трёхминRow parentтрёхминRowByFK__Работы__ID_трёхм__47DBAE45, худзарRow parentхудзарRowByFK__Работы__ID_худза__48CFD27E, рекламаRow parentрекламаRowByFK__Работы__ID_рекла__49C3F6B7, штрафRow parentштрафRowByFK__Работы__ID_штраф__4AB81AF0, double колво_баллов, decimal сумма) {
                 РаботыRow rowРаботыRow = ((РаботыRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1176,8 +1176,8 @@ namespace TVCOM {
                         null,
                         колво_баллов,
                         сумма};
-                if ((parentФормыRowByFK__Работы__сумма__45F365D3 != null)) {
-                    columnValuesArray[2] = parentФормыRowByFK__Работы__сумма__45F365D3[0];
+                if ((parentФормыRowByFK__Работы__ID_Формы__45F365D3 != null)) {
+                    columnValuesArray[2] = parentФормыRowByFK__Работы__ID_Формы__45F365D3[0];
                 }
                 if ((parentСотрудникиRowByFK__Работы__ID_автор__46E78A0C != null)) {
                     columnValuesArray[3] = parentСотрудникиRowByFK__Работы__ID_автор__46E78A0C[0];
@@ -1348,7 +1348,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1640,7 +1640,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1998,7 +1998,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2290,7 +2290,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2583,7 +2583,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2875,7 +2875,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3167,7 +3167,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3233,6 +3233,8 @@ namespace TVCOM {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ALL_REPORTDataTable : global::System.Data.TypedTableBase<ALL_REPORTRow> {
             
+            private global::System.Data.DataColumn _column_;
+            
             private global::System.Data.DataColumn columnНазвание;
             
             private global::System.Data.DataColumn columnНазвание1;
@@ -3286,6 +3288,14 @@ namespace TVCOM {
             protected ALL_REPORTDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn @__Column {
+                get {
+                    return this._column_;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3413,9 +3423,10 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ALL_REPORTRow AddALL_REPORTRow(string Название, string Название1, string Автор, System.DateTime Дата, double Балл, double Количество_баллов, double Количество_баллов1, double Количество_баллов2, double Количество_баллов3, double колво_баллов, decimal сумма) {
+            public ALL_REPORTRow AddALL_REPORTRow(long __, string Название, string Название1, string Автор, System.DateTime Дата, double Балл, double Количество_баллов, double Количество_баллов1, double Количество_баллов2, double Количество_баллов3, double колво_баллов, decimal сумма) {
                 ALL_REPORTRow rowALL_REPORTRow = ((ALL_REPORTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        __,
                         Название,
                         Название1,
                         Автор,
@@ -3449,6 +3460,7 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this._column_ = base.Columns["№"];
                 this.columnНазвание = base.Columns["Название"];
                 this.columnНазвание1 = base.Columns["Название1"];
                 this.columnАвтор = base.Columns["Автор"];
@@ -3465,6 +3477,10 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this._column_ = new global::System.Data.DataColumn("№", typeof(long), null, global::System.Data.MappingType.Element);
+                this._column_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_");
+                this._column_.ExtendedProperties.Add("Generator_UserColumnName", "№");
+                base.Columns.Add(this._column_);
                 this.columnНазвание = new global::System.Data.DataColumn("Название", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНазвание);
                 this.columnНазвание1 = new global::System.Data.DataColumn("Название1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3487,6 +3503,7 @@ namespace TVCOM {
                 base.Columns.Add(this.columnколво_баллов);
                 this.columnсумма = new global::System.Data.DataColumn("сумма", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnсумма);
+                this._column_.ReadOnly = true;
                 this.columnНазвание.AllowDBNull = false;
                 this.columnНазвание.MaxLength = 100;
                 this.columnНазвание1.AllowDBNull = false;
@@ -3561,7 +3578,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3627,9 +3644,11 @@ namespace TVCOM {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class AUTHOR_REPORTDataTable : global::System.Data.TypedTableBase<AUTHOR_REPORTRow> {
             
+            private global::System.Data.DataColumn _column_;
+            
             private global::System.Data.DataColumn columnНазвание;
             
-            private global::System.Data.DataColumn columnНазвание1;
+            private global::System.Data.DataColumn columnформа;
             
             private global::System.Data.DataColumn columnАвтор;
             
@@ -3637,17 +3656,13 @@ namespace TVCOM {
             
             private global::System.Data.DataColumn columnБалл;
             
-            private global::System.Data.DataColumn columnКоличество_баллов;
+            private global::System.Data.DataColumn columnтрёхмин;
             
-            private global::System.Data.DataColumn columnКоличество_баллов1;
+            private global::System.Data.DataColumn columnхудзар;
             
-            private global::System.Data.DataColumn columnКоличество_баллов2;
+            private global::System.Data.DataColumn columnреклама;
             
-            private global::System.Data.DataColumn columnКоличество_баллов3;
-            
-            private global::System.Data.DataColumn columnколво_баллов;
-            
-            private global::System.Data.DataColumn columnсумма;
+            private global::System.Data.DataColumn columnштраф;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3684,6 +3699,14 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn @__Column {
+                get {
+                    return this._column_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn НазваниеColumn {
                 get {
                     return this.columnНазвание;
@@ -3692,9 +3715,9 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Название1Column {
+            public global::System.Data.DataColumn формаColumn {
                 get {
-                    return this.columnНазвание1;
+                    return this.columnформа;
                 }
             }
             
@@ -3724,49 +3747,33 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Количество_балловColumn {
+            public global::System.Data.DataColumn трёхминColumn {
                 get {
-                    return this.columnКоличество_баллов;
+                    return this.columnтрёхмин;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Количество_баллов1Column {
+            public global::System.Data.DataColumn худзарColumn {
                 get {
-                    return this.columnКоличество_баллов1;
+                    return this.columnхудзар;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Количество_баллов2Column {
+            public global::System.Data.DataColumn рекламаColumn {
                 get {
-                    return this.columnКоличество_баллов2;
+                    return this.columnреклама;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Количество_баллов3Column {
+            public global::System.Data.DataColumn штрафColumn {
                 get {
-                    return this.columnКоличество_баллов3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn колво_балловColumn {
-                get {
-                    return this.columnколво_баллов;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn суммаColumn {
-                get {
-                    return this.columnсумма;
+                    return this.columnштраф;
                 }
             }
             
@@ -3807,20 +3814,19 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AUTHOR_REPORTRow AddAUTHOR_REPORTRow(string Название, string Название1, string Автор, System.DateTime Дата, double Балл, double Количество_баллов, double Количество_баллов1, double Количество_баллов2, double Количество_баллов3, double колво_баллов, decimal сумма) {
+            public AUTHOR_REPORTRow AddAUTHOR_REPORTRow(long __, string Название, string форма, string Автор, System.DateTime Дата, double Балл, double трёхмин, double худзар, double реклама, double штраф) {
                 AUTHOR_REPORTRow rowAUTHOR_REPORTRow = ((AUTHOR_REPORTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        __,
                         Название,
-                        Название1,
+                        форма,
                         Автор,
                         Дата,
                         Балл,
-                        Количество_баллов,
-                        Количество_баллов1,
-                        Количество_баллов2,
-                        Количество_баллов3,
-                        колво_баллов,
-                        сумма};
+                        трёхмин,
+                        худзар,
+                        реклама,
+                        штраф};
                 rowAUTHOR_REPORTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAUTHOR_REPORTRow);
                 return rowAUTHOR_REPORTRow;
@@ -3843,48 +3849,48 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this._column_ = base.Columns["№"];
                 this.columnНазвание = base.Columns["Название"];
-                this.columnНазвание1 = base.Columns["Название1"];
+                this.columnформа = base.Columns["форма"];
                 this.columnАвтор = base.Columns["Автор"];
                 this.columnДата = base.Columns["Дата"];
                 this.columnБалл = base.Columns["Балл"];
-                this.columnКоличество_баллов = base.Columns["Количество_баллов"];
-                this.columnКоличество_баллов1 = base.Columns["Количество_баллов1"];
-                this.columnКоличество_баллов2 = base.Columns["Количество_баллов2"];
-                this.columnКоличество_баллов3 = base.Columns["Количество_баллов3"];
-                this.columnколво_баллов = base.Columns["колво_баллов"];
-                this.columnсумма = base.Columns["сумма"];
+                this.columnтрёхмин = base.Columns["трёхмин"];
+                this.columnхудзар = base.Columns["худзар"];
+                this.columnреклама = base.Columns["реклама"];
+                this.columnштраф = base.Columns["штраф"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this._column_ = new global::System.Data.DataColumn("№", typeof(long), null, global::System.Data.MappingType.Element);
+                this._column_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_");
+                this._column_.ExtendedProperties.Add("Generator_UserColumnName", "№");
+                base.Columns.Add(this._column_);
                 this.columnНазвание = new global::System.Data.DataColumn("Название", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНазвание);
-                this.columnНазвание1 = new global::System.Data.DataColumn("Название1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНазвание1);
+                this.columnформа = new global::System.Data.DataColumn("форма", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnформа);
                 this.columnАвтор = new global::System.Data.DataColumn("Автор", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnАвтор);
                 this.columnДата = new global::System.Data.DataColumn("Дата", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДата);
                 this.columnБалл = new global::System.Data.DataColumn("Балл", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnБалл);
-                this.columnКоличество_баллов = new global::System.Data.DataColumn("Количество_баллов", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnКоличество_баллов);
-                this.columnКоличество_баллов1 = new global::System.Data.DataColumn("Количество_баллов1", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnКоличество_баллов1);
-                this.columnКоличество_баллов2 = new global::System.Data.DataColumn("Количество_баллов2", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnКоличество_баллов2);
-                this.columnКоличество_баллов3 = new global::System.Data.DataColumn("Количество_баллов3", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnКоличество_баллов3);
-                this.columnколво_баллов = new global::System.Data.DataColumn("колво_баллов", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnколво_баллов);
-                this.columnсумма = new global::System.Data.DataColumn("сумма", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnсумма);
+                this.columnтрёхмин = new global::System.Data.DataColumn("трёхмин", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnтрёхмин);
+                this.columnхудзар = new global::System.Data.DataColumn("худзар", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnхудзар);
+                this.columnреклама = new global::System.Data.DataColumn("реклама", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnреклама);
+                this.columnштраф = new global::System.Data.DataColumn("штраф", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnштраф);
+                this._column_.ReadOnly = true;
                 this.columnНазвание.AllowDBNull = false;
                 this.columnНазвание.MaxLength = 100;
-                this.columnНазвание1.AllowDBNull = false;
-                this.columnНазвание1.MaxLength = 50;
+                this.columnформа.AllowDBNull = false;
+                this.columnформа.MaxLength = 50;
                 this.columnАвтор.ReadOnly = true;
                 this.columnАвтор.MaxLength = 55;
                 this.columnДата.AllowDBNull = false;
@@ -3955,7 +3961,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4021,6 +4027,8 @@ namespace TVCOM {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class POST_REPORTDataTable : global::System.Data.TypedTableBase<POST_REPORTRow> {
             
+            private global::System.Data.DataColumn _column_;
+            
             private global::System.Data.DataColumn columnНазвание;
             
             private global::System.Data.DataColumn columnНазвание1;
@@ -4074,6 +4082,14 @@ namespace TVCOM {
             protected POST_REPORTDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn @__Column {
+                get {
+                    return this._column_;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4201,9 +4217,10 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public POST_REPORTRow AddPOST_REPORTRow(string Название, string Название1, string Автор, System.DateTime Дата, double Балл, double Количество_баллов, double Количество_баллов1, double Количество_баллов2, double Количество_баллов3, double колво_баллов, decimal сумма) {
+            public POST_REPORTRow AddPOST_REPORTRow(long __, string Название, string Название1, string Автор, System.DateTime Дата, double Балл, double Количество_баллов, double Количество_баллов1, double Количество_баллов2, double Количество_баллов3, double колво_баллов, decimal сумма) {
                 POST_REPORTRow rowPOST_REPORTRow = ((POST_REPORTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        __,
                         Название,
                         Название1,
                         Автор,
@@ -4237,6 +4254,7 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this._column_ = base.Columns["№"];
                 this.columnНазвание = base.Columns["Название"];
                 this.columnНазвание1 = base.Columns["Название1"];
                 this.columnАвтор = base.Columns["Автор"];
@@ -4253,6 +4271,10 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this._column_ = new global::System.Data.DataColumn("№", typeof(long), null, global::System.Data.MappingType.Element);
+                this._column_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column_");
+                this._column_.ExtendedProperties.Add("Generator_UserColumnName", "№");
+                base.Columns.Add(this._column_);
                 this.columnНазвание = new global::System.Data.DataColumn("Название", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНазвание);
                 this.columnНазвание1 = new global::System.Data.DataColumn("Название1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4275,6 +4297,7 @@ namespace TVCOM {
                 base.Columns.Add(this.columnколво_баллов);
                 this.columnсумма = new global::System.Data.DataColumn("сумма", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnсумма);
+                this._column_.ReadOnly = true;
                 this.columnНазвание.AllowDBNull = false;
                 this.columnНазвание.MaxLength = 100;
                 this.columnНазвание1.AllowDBNull = false;
@@ -4349,7 +4372,7 @@ namespace TVCOM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ТивикомDataSet ds = new ТивикомDataSet();
+                ТивикомDataSet1 ds = new ТивикомDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4663,6 +4686,17 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ФормыRow ФормыRow {
+                get {
+                    return ((ФормыRow)(this.GetParentRow(this.Table.ParentRelations["FK__Работы__ID_Формы__45F365D3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Работы__ID_Формы__45F365D3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public худзарRow худзарRow {
                 get {
                     return ((худзарRow)(this.GetParentRow(this.Table.ParentRelations["FK__Работы__ID_худза__48CFD27E"])));
@@ -4680,17 +4714,6 @@ namespace TVCOM {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Работы__ID_штраф__4AB81AF0"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ФормыRow ФормыRow {
-                get {
-                    return ((ФормыRow)(this.GetParentRow(this.Table.ParentRelations["FK__Работы__сумма__45F365D3"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Работы__сумма__45F365D3"]);
                 }
             }
             
@@ -5081,11 +5104,11 @@ namespace TVCOM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public РаботыRow[] GetРаботыRows() {
-                if ((this.Table.ChildRelations["FK__Работы__сумма__45F365D3"] == null)) {
+                if ((this.Table.ChildRelations["FK__Работы__ID_Формы__45F365D3"] == null)) {
                     return new РаботыRow[0];
                 }
                 else {
-                    return ((РаботыRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Работы__сумма__45F365D3"])));
+                    return ((РаботыRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Работы__ID_Формы__45F365D3"])));
                 }
             }
         }
@@ -5258,6 +5281,22 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long __ {
+                get {
+                    try {
+                        return ((long)(this[this.tableALL_REPORT.@__Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'№\' в таблице \'ALL_REPORT\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableALL_REPORT.@__Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Название {
                 get {
                     return ((string)(this[this.tableALL_REPORT.НазваниеColumn]));
@@ -5419,6 +5458,18 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is__Null() {
+                return this.IsNull(this.tableALL_REPORT.@__Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set__Null() {
+                this[this.tableALL_REPORT.@__Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsАвторNull() {
                 return this.IsNull(this.tableALL_REPORT.АвторColumn);
             }
@@ -5530,6 +5581,22 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long __ {
+                get {
+                    try {
+                        return ((long)(this[this.tableAUTHOR_REPORT.@__Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'№\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAUTHOR_REPORT.@__Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Название {
                 get {
                     return ((string)(this[this.tableAUTHOR_REPORT.НазваниеColumn]));
@@ -5541,12 +5608,12 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Название1 {
+            public string форма {
                 get {
-                    return ((string)(this[this.tableAUTHOR_REPORT.Название1Column]));
+                    return ((string)(this[this.tableAUTHOR_REPORT.формаColumn]));
                 }
                 set {
-                    this[this.tableAUTHOR_REPORT.Название1Column] = value;
+                    this[this.tableAUTHOR_REPORT.формаColumn] = value;
                 }
             }
             
@@ -5595,101 +5662,78 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Количество_баллов {
+            public double трёхмин {
                 get {
                     try {
-                        return ((double)(this[this.tableAUTHOR_REPORT.Количество_балловColumn]));
+                        return ((double)(this[this.tableAUTHOR_REPORT.трёхминColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество_баллов\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'трёхмин\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAUTHOR_REPORT.Количество_балловColumn] = value;
+                    this[this.tableAUTHOR_REPORT.трёхминColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Количество_баллов1 {
+            public double худзар {
                 get {
                     try {
-                        return ((double)(this[this.tableAUTHOR_REPORT.Количество_баллов1Column]));
+                        return ((double)(this[this.tableAUTHOR_REPORT.худзарColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество_баллов1\' в таблице \'AUTHOR_REPORT\' равно DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'худзар\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAUTHOR_REPORT.Количество_баллов1Column] = value;
+                    this[this.tableAUTHOR_REPORT.худзарColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Количество_баллов2 {
+            public double реклама {
                 get {
                     try {
-                        return ((double)(this[this.tableAUTHOR_REPORT.Количество_баллов2Column]));
+                        return ((double)(this[this.tableAUTHOR_REPORT.рекламаColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество_баллов2\' в таблице \'AUTHOR_REPORT\' равно DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'реклама\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAUTHOR_REPORT.Количество_баллов2Column] = value;
+                    this[this.tableAUTHOR_REPORT.рекламаColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Количество_баллов3 {
+            public double штраф {
                 get {
                     try {
-                        return ((double)(this[this.tableAUTHOR_REPORT.Количество_баллов3Column]));
+                        return ((double)(this[this.tableAUTHOR_REPORT.штрафColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество_баллов3\' в таблице \'AUTHOR_REPORT\' равно DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'штраф\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAUTHOR_REPORT.Количество_баллов3Column] = value;
+                    this[this.tableAUTHOR_REPORT.штрафColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double колво_баллов {
-                get {
-                    try {
-                        return ((double)(this[this.tableAUTHOR_REPORT.колво_балловColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'колво_баллов\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAUTHOR_REPORT.колво_балловColumn] = value;
-                }
+            public bool Is__Null() {
+                return this.IsNull(this.tableAUTHOR_REPORT.@__Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal сумма {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableAUTHOR_REPORT.суммаColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'сумма\' в таблице \'AUTHOR_REPORT\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAUTHOR_REPORT.суммаColumn] = value;
-                }
+            public void Set__Null() {
+                this[this.tableAUTHOR_REPORT.@__Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5718,74 +5762,50 @@ namespace TVCOM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsКоличество_балловNull() {
-                return this.IsNull(this.tableAUTHOR_REPORT.Количество_балловColumn);
+            public bool IsтрёхминNull() {
+                return this.IsNull(this.tableAUTHOR_REPORT.трёхминColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetКоличество_балловNull() {
-                this[this.tableAUTHOR_REPORT.Количество_балловColumn] = global::System.Convert.DBNull;
+            public void SetтрёхминNull() {
+                this[this.tableAUTHOR_REPORT.трёхминColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsКоличество_баллов1Null() {
-                return this.IsNull(this.tableAUTHOR_REPORT.Количество_баллов1Column);
+            public bool IsхудзарNull() {
+                return this.IsNull(this.tableAUTHOR_REPORT.худзарColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetКоличество_баллов1Null() {
-                this[this.tableAUTHOR_REPORT.Количество_баллов1Column] = global::System.Convert.DBNull;
+            public void SetхудзарNull() {
+                this[this.tableAUTHOR_REPORT.худзарColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsКоличество_баллов2Null() {
-                return this.IsNull(this.tableAUTHOR_REPORT.Количество_баллов2Column);
+            public bool IsрекламаNull() {
+                return this.IsNull(this.tableAUTHOR_REPORT.рекламаColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetКоличество_баллов2Null() {
-                this[this.tableAUTHOR_REPORT.Количество_баллов2Column] = global::System.Convert.DBNull;
+            public void SetрекламаNull() {
+                this[this.tableAUTHOR_REPORT.рекламаColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsКоличество_баллов3Null() {
-                return this.IsNull(this.tableAUTHOR_REPORT.Количество_баллов3Column);
+            public bool IsштрафNull() {
+                return this.IsNull(this.tableAUTHOR_REPORT.штрафColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetКоличество_баллов3Null() {
-                this[this.tableAUTHOR_REPORT.Количество_баллов3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isколво_балловNull() {
-                return this.IsNull(this.tableAUTHOR_REPORT.колво_балловColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setколво_балловNull() {
-                this[this.tableAUTHOR_REPORT.колво_балловColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsсуммаNull() {
-                return this.IsNull(this.tableAUTHOR_REPORT.суммаColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetсуммаNull() {
-                this[this.tableAUTHOR_REPORT.суммаColumn] = global::System.Convert.DBNull;
+            public void SetштрафNull() {
+                this[this.tableAUTHOR_REPORT.штрафColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5801,6 +5821,22 @@ namespace TVCOM {
             internal POST_REPORTRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePOST_REPORT = ((POST_REPORTDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long __ {
+                get {
+                    try {
+                        return ((long)(this[this.tablePOST_REPORT.@__Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'№\' в таблице \'POST_REPORT\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePOST_REPORT.@__Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5962,6 +5998,18 @@ namespace TVCOM {
                 set {
                     this[this.tablePOST_REPORT.суммаColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is__Null() {
+                return this.IsNull(this.tablePOST_REPORT.@__Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set__Null() {
+                this[this.tablePOST_REPORT.@__Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6436,7 +6484,7 @@ namespace TVCOM {
         }
     }
 }
-namespace TVCOM.ТивикомDataSetTableAdapters {
+namespace TVCOM.ТивикомDataSet1TableAdapters {
     
     
     /// <summary>
@@ -6615,7 +6663,7 @@ SELECT ID_Должности, Название, Сумма_за_балл FROM Д
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.ДолжностиDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.ДолжностиDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6628,9 +6676,9 @@ SELECT ID_Должности, Название, Сумма_за_балл FROM Д
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.ДолжностиDataTable GetData() {
+        public virtual ТивикомDataSet1.ДолжностиDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.ДолжностиDataTable dataTable = new ТивикомDataSet.ДолжностиDataTable();
+            ТивикомDataSet1.ДолжностиDataTable dataTable = new ТивикомDataSet1.ДолжностиDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6638,14 +6686,14 @@ SELECT ID_Должности, Название, Сумма_за_балл FROM Д
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.ДолжностиDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.ДолжностиDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Должности");
         }
         
@@ -6992,7 +7040,7 @@ SELECT ID, Название, ID_формы, ID_автора, Дата, Балл,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.РаботыDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.РаботыDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7005,9 +7053,9 @@ SELECT ID, Название, ID_формы, ID_автора, Дата, Балл,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.РаботыDataTable GetData() {
+        public virtual ТивикомDataSet1.РаботыDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.РаботыDataTable dataTable = new ТивикомDataSet.РаботыDataTable();
+            ТивикомDataSet1.РаботыDataTable dataTable = new ТивикомDataSet1.РаботыDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7015,14 +7063,14 @@ SELECT ID, Название, ID_формы, ID_автора, Дата, Балл,
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.РаботыDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.РаботыDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Работы");
         }
         
@@ -7477,7 +7525,7 @@ SELECT ID_рекламы, Наличие, Количество_баллов FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.рекламаDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.рекламаDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7490,9 +7538,9 @@ SELECT ID_рекламы, Наличие, Количество_баллов FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.рекламаDataTable GetData() {
+        public virtual ТивикомDataSet1.рекламаDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.рекламаDataTable dataTable = new ТивикомDataSet.рекламаDataTable();
+            ТивикомDataSet1.рекламаDataTable dataTable = new ТивикомDataSet1.рекламаDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7500,14 +7548,14 @@ SELECT ID_рекламы, Наличие, Количество_баллов FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.рекламаDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.рекламаDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "реклама");
         }
         
@@ -7851,7 +7899,7 @@ SELECT ID_Сотрудника, Фамилия, Имя, Отчество, ID_Д�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.СотрудникиDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.СотрудникиDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7864,9 +7912,9 @@ SELECT ID_Сотрудника, Фамилия, Имя, Отчество, ID_Д�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.СотрудникиDataTable GetData() {
+        public virtual ТивикомDataSet1.СотрудникиDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.СотрудникиDataTable dataTable = new ТивикомDataSet.СотрудникиDataTable();
+            ТивикомDataSet1.СотрудникиDataTable dataTable = new ТивикомDataSet1.СотрудникиDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7874,14 +7922,14 @@ SELECT ID_Сотрудника, Фамилия, Имя, Отчество, ID_Д�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.СотрудникиDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.СотрудникиDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Сотрудники");
         }
         
@@ -8285,7 +8333,7 @@ SELECT ID_трёхмин, Наличие, Количество_баллов FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.трёхминDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.трёхминDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8298,9 +8346,9 @@ SELECT ID_трёхмин, Наличие, Количество_баллов FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.трёхминDataTable GetData() {
+        public virtual ТивикомDataSet1.трёхминDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.трёхминDataTable dataTable = new ТивикомDataSet.трёхминDataTable();
+            ТивикомDataSet1.трёхминDataTable dataTable = new ТивикомDataSet1.трёхминDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8308,14 +8356,14 @@ SELECT ID_трёхмин, Наличие, Количество_баллов FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.трёхминDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.трёхминDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "трёхмин");
         }
         
@@ -8637,7 +8685,7 @@ SELECT ID_Формы, Название, Количество_баллов FROM �
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.ФормыDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.ФормыDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8650,9 +8698,9 @@ SELECT ID_Формы, Название, Количество_баллов FROM �
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.ФормыDataTable GetData() {
+        public virtual ТивикомDataSet1.ФормыDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.ФормыDataTable dataTable = new ТивикомDataSet.ФормыDataTable();
+            ТивикомDataSet1.ФормыDataTable dataTable = new ТивикомDataSet1.ФормыDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8660,14 +8708,14 @@ SELECT ID_Формы, Название, Количество_баллов FROM �
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.ФормыDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.ФормыDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Формы");
         }
         
@@ -8967,7 +9015,7 @@ SELECT ID_худзар, Наличие, Количество_баллов FROM �
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.худзарDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.худзарDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8980,9 +9028,9 @@ SELECT ID_худзар, Наличие, Количество_баллов FROM �
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.худзарDataTable GetData() {
+        public virtual ТивикомDataSet1.худзарDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.худзарDataTable dataTable = new ТивикомDataSet.худзарDataTable();
+            ТивикомDataSet1.худзарDataTable dataTable = new ТивикомDataSet1.худзарDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8990,14 +9038,14 @@ SELECT ID_худзар, Наличие, Количество_баллов FROM �
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.худзарDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.худзарDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "худзар");
         }
         
@@ -9321,7 +9369,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.штрафDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.штрафDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9334,9 +9382,9 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.штрафDataTable GetData() {
+        public virtual ТивикомDataSet1.штрафDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.штрафDataTable dataTable = new ТивикомDataSet.штрафDataTable();
+            ТивикомDataSet1.штрафDataTable dataTable = new ТивикомDataSet1.штрафDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9344,14 +9392,14 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet.штрафDataTable dataTable) {
+        public virtual int Update(ТивикомDataSet1.штрафDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ТивикомDataSet dataSet) {
+        public virtual int Update(ТивикомDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "штраф");
         }
         
@@ -9618,6 +9666,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ALL_REPORT";
+            tableMapping.ColumnMappings.Add("№", "№");
             tableMapping.ColumnMappings.Add("Название", "Название");
             tableMapping.ColumnMappings.Add("Название1", "Название1");
             tableMapping.ColumnMappings.Add("Автор", "Автор");
@@ -9648,14 +9697,28 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             this._commandCollection[0].CommandText = "dbo.ALL_REPORT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@f", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.ALL_REPORTDataTable dataTable) {
+        public virtual int Fill(ТивикомDataSet1.ALL_REPORTDataTable dataTable, global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -9667,9 +9730,21 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.ALL_REPORTDataTable GetData() {
+        public virtual ТивикомDataSet1.ALL_REPORTDataTable GetData(global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ТивикомDataSet.ALL_REPORTDataTable dataTable = new ТивикомDataSet.ALL_REPORTDataTable();
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            ТивикомDataSet1.ALL_REPORTDataTable dataTable = new ТивикомDataSet1.ALL_REPORTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9796,17 +9871,16 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "AUTHOR_REPORT";
+            tableMapping.ColumnMappings.Add("№", "№");
             tableMapping.ColumnMappings.Add("Название", "Название");
-            tableMapping.ColumnMappings.Add("Название1", "Название1");
+            tableMapping.ColumnMappings.Add("форма", "форма");
             tableMapping.ColumnMappings.Add("Автор", "Автор");
             tableMapping.ColumnMappings.Add("Дата", "Дата");
             tableMapping.ColumnMappings.Add("Балл", "Балл");
-            tableMapping.ColumnMappings.Add("Количество_баллов", "Количество_баллов");
-            tableMapping.ColumnMappings.Add("Количество_баллов1", "Количество_баллов1");
-            tableMapping.ColumnMappings.Add("Количество_баллов2", "Количество_баллов2");
-            tableMapping.ColumnMappings.Add("Количество_баллов3", "Количество_баллов3");
-            tableMapping.ColumnMappings.Add("колво_баллов", "колво_баллов");
-            tableMapping.ColumnMappings.Add("сумма", "сумма");
+            tableMapping.ColumnMappings.Add("трёхмин", "трёхмин");
+            tableMapping.ColumnMappings.Add("худзар", "худзар");
+            tableMapping.ColumnMappings.Add("реклама", "реклама");
+            tableMapping.ColumnMappings.Add("штраф", "штраф");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -9827,19 +9901,33 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@f", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.AUTHOR_REPORTDataTable dataTable, global::System.Nullable<int> id) {
+        public virtual int Fill(ТивикомDataSet1.AUTHOR_REPORTDataTable dataTable, global::System.Nullable<int> id, global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9852,7 +9940,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.AUTHOR_REPORTDataTable GetData(global::System.Nullable<int> id) {
+        public virtual ТивикомDataSet1.AUTHOR_REPORTDataTable GetData(global::System.Nullable<int> id, global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id.Value));
@@ -9860,7 +9948,19 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            ТивикомDataSet.AUTHOR_REPORTDataTable dataTable = new ТивикомDataSet.AUTHOR_REPORTDataTable();
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            ТивикомDataSet1.AUTHOR_REPORTDataTable dataTable = new ТивикомDataSet1.AUTHOR_REPORTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9987,6 +10087,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "POST_REPORT";
+            tableMapping.ColumnMappings.Add("№", "№");
             tableMapping.ColumnMappings.Add("Название", "Название");
             tableMapping.ColumnMappings.Add("Название1", "Название1");
             tableMapping.ColumnMappings.Add("Автор", "Автор");
@@ -10018,19 +10119,33 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@f", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ТивикомDataSet.POST_REPORTDataTable dataTable, global::System.Nullable<int> id) {
+        public virtual int Fill(ТивикомDataSet1.POST_REPORTDataTable dataTable, global::System.Nullable<int> id, global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -10043,7 +10158,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ТивикомDataSet.POST_REPORTDataTable GetData(global::System.Nullable<int> id) {
+        public virtual ТивикомDataSet1.POST_REPORTDataTable GetData(global::System.Nullable<int> id, global::System.Nullable<global::System.DateTime> s, global::System.Nullable<global::System.DateTime> f) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id.Value));
@@ -10051,7 +10166,19 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            ТивикомDataSet.POST_REPORTDataTable dataTable = new ТивикомDataSet.POST_REPORTDataTable();
+            if ((s.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(s.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((f.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(f.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            ТивикомDataSet1.POST_REPORTDataTable dataTable = new ТивикомDataSet1.POST_REPORTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -10309,7 +10436,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(ТивикомDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ТивикомDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._должностиTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Должности.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -10391,7 +10518,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(ТивикомDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ТивикомDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._должностиTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Должности.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -10465,7 +10592,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(ТивикомDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ТивикомDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._работыTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Работы.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -10563,7 +10690,7 @@ SELECT ID_штраф, Наличие, Количество_баллов FROM ш�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(ТивикомDataSet dataSet) {
+        public virtual int UpdateAll(ТивикомDataSet1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -145,10 +145,10 @@
     <Compile Include="View\ReportUserWindow.xaml.cs">
       <DependentUpon>ReportUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ТивикомDataSet.Designer.cs">
+    <Compile Include="ТивикомDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ТивикомDataSet.xsd</DependentUpon>
+      <DependentUpon>ТивикомDataSet1.xsd</DependentUpon>
     </Compile>
     <Page Include="View\Control.xaml">
       <SubType>Designer</SubType>
@@ -207,17 +207,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\DocPattern\!_ОБЩАЯ_ТАБЛИЦА  Режиссеры.xlsx" />
-    <None Include="Resources\DocPattern\!_ТАБЛИЦА  Режиссеры.xlsx" />
-    <None Include="ТивикомDataSet.xsc">
-      <DependentUpon>ТивикомDataSet.xsd</DependentUpon>
+    <None Include="Resources\DocPattern\!_ТАБЛИЦА_Режиссеры.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ТивикомDataSet.xsd">
+    <None Include="ТивикомDataSet1.xsc">
+      <DependentUpon>ТивикомDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ТивикомDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ТивикомDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>ТивикомDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ТивикомDataSet.xss">
-      <DependentUpon>ТивикомDataSet.xsd</DependentUpon>
+    <None Include="ТивикомDataSet1.xss">
+      <DependentUpon>ТивикомDataSet1.xsd</DependentUpon>
     </None>
     <Resource Include="Resources\Fonts\Inter-Regular.ttf" />
     <Resource Include="Resources\Fonts\Manrope-ExtraBold.ttf" />

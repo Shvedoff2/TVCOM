@@ -35,7 +35,7 @@
                         <Border Grid.Column="1" Background="#B00A0A" Height="300">
                             <StackPanel VerticalAlignment="Center">
                                 <Button Height="60" Width="240" Margin="0,0,0,20" Content="Вывести общий отчёт"/>
-                                <Button Height="60" Width="240" Content="Вывести личный отчёт"/>
+                                <Button Height="60" Width="240" Content="Вывести личный отчёт" Command="{Binding ReportOpenCommand}"/>
                             </StackPanel>
                         </Border>
                     </Grid>

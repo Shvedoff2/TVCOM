@@ -8,7 +8,9 @@
         Title="ReportUserWindow" Height="450" Width="385"
         ResizeMode="NoResize" WindowStyle="None" 
         Background="Transparent" AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png" >
+        WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png"        
+        xmlns:viewmodel="clr-namespace:TVCOM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -20,9 +22,9 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Дата начала" FontFamily="{DynamicResource Inter}" Foreground="White" FontSize="15"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30" Grid.Row="2" VerticalAlignment="Center">
-                <ComboBox Name="StartDay" Height="30" Width="75" Margin="0,0,20,0" Style="{DynamicResource ComboReport}" Text="{Binding Day}"/>
-                <ComboBox Name="StartMonth" Height="30" Width="150" Margin="0,0,20,0" SelectionChanged="Month_SelectionChanged" Style="{DynamicResource ComboReport}" 
-               SelectedValuePath="Tag" SelectedValue="{Binding SelectedMonth}">
+                <ComboBox Name="StartDay" Height="30" Width="75" Margin="0,0,20,0" Style="{DynamicResource ComboReport}" Text="{Binding StartDay}"/>
+                <ComboBox Name="StartMonth" Height="30" Width="150" Margin="0,0,20,0" SelectionChanged="StartMonth_SelectionChanged" Style="{DynamicResource ComboReport}" 
+               SelectedValuePath="Tag" SelectedValue="{Binding SelectedStartMonth}">
                     <ComboBoxItem Content="Январь" Tag="1"/>
                     <ComboBoxItem Content="Февраль" Tag="2"/>
                     <ComboBoxItem Content="Март" Tag="3"/>
@@ -36,7 +38,7 @@
                     <ComboBoxItem Content="Ноябрь" Tag="11"/>
                     <ComboBoxItem Content="Декабрь" Tag="12"/>
                 </ComboBox>
-                <ComboBox x:Name="StartYear" Style="{DynamicResource ComboReport}" Width="75" Text="{Binding Year}">
+                <ComboBox x:Name="StartYear" Style="{DynamicResource ComboReport}" Width="75" Text="{Binding StartYear}">
                     <ComboBoxItem Content="2024"/>
                     <ComboBoxItem Content="2025"/>
                     <ComboBoxItem Content="2026"/>
@@ -48,9 +50,9 @@
             </StackPanel>
             <Label Content="Дата конца" FontFamily="{DynamicResource Inter}" Foreground="White" FontSize="15"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30" Grid.Row="2" VerticalAlignment="Center">
-                <ComboBox Name="FinDay" Height="30" Width="75" Margin="0,0,20,0" Style="{DynamicResource ComboReport}" Text="{Binding Day}"/>
-                <ComboBox Name="FinMonth" Height="30" Width="150" Margin="0,0,20,0" SelectionChanged="Month_SelectionChanged" Style="{DynamicResource ComboReport}" 
-   SelectedValuePath="Tag" SelectedValue="{Binding SelectedMonth}">
+                <ComboBox Name="FinDay" Height="30" Width="75" Margin="0,0,20,0" Style="{DynamicResource ComboReport}" Text="{Binding FinDay}"/>
+                <ComboBox Name="FinMonth" Height="30" Width="150" Margin="0,0,20,0" SelectionChanged="FinMonth_SelectionChanged" Style="{DynamicResource ComboReport}" 
+   SelectedValuePath="Tag" SelectedValue="{Binding SelectedFinMonth}">
                     <ComboBoxItem Content="Январь" Tag="1"/>
                     <ComboBoxItem Content="Февраль" Tag="2"/>
                     <ComboBoxItem Content="Март" Tag="3"/>
@@ -64,7 +66,7 @@
                     <ComboBoxItem Content="Ноябрь" Tag="11"/>
                     <ComboBoxItem Content="Декабрь" Tag="12"/>
                 </ComboBox>
-                <ComboBox x:Name="FinYear" Style="{DynamicResource ComboReport}" Width="75" Text="{Binding Year}">
+                <ComboBox x:Name="FinYear" Style="{DynamicResource ComboReport}" Width="75" Text="{Binding FinYear}">
                     <ComboBoxItem Content="2024"/>
                     <ComboBoxItem Content="2025"/>
                     <ComboBoxItem Content="2026"/>
@@ -74,7 +76,7 @@
                     <ComboBoxItem Content="2030"/>
                 </ComboBox>
             </StackPanel>
-            <Button Content="Вывести личный отчёт" Width="300" Height="60"/>
+            <Button Content="Вывести личный отчёт" Width="300" Height="60" Command="{Binding ReportUserCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

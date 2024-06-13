@@ -1,13 +1,9 @@
 ﻿using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TVCOM.Model
 {
@@ -100,22 +96,27 @@ namespace TVCOM.Model
     {
         public bool ReportUser(int ID, DateTime start, DateTime end)
         {
-            using (ExcelPackage package = new ExcelPackage(new FileInfo("\\Resources\\DocPattern\\!_ТАБЛИЦА  Режиссеры.xlsx")))
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string path = "E:\\bl\\TVCOM\\TVCOM\\Resources\\DocPattern\\!_ТАБЛИЦА_Режиссеры.xlsx";
+            FileInfo existingFile = new FileInfo(path);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
             {
-                // Выбираем существующий лист
-                ExcelWorksheet worksheet = package.Workbook.Worksheets["Лист1"];
+                ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet"];
 
                 // Подключаемся к базе данных и выполняем SQL процедуру
                 using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
                 {
-                    SqlCommand cmd = new SqlCommand($"EXEC AUTHOR_REPORT {ID},'{start}','{end}'", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("EXEC AUTHOR_REPORT @ID, @start, @end", conn);
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
                     // Заполняем лист данными, начиная с 6 строки
-                    worksheet.Cells["A6"].LoadFromDataTable(dt, true);
+                    worksheet.Cells["A6"].LoadFromDataTable(dt, false);
                 }
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
                 dlg.FileName = "!_ТАБЛИЦА  Режиссеры"; // Имя по умолчанию
