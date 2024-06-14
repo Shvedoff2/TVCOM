@@ -13,6 +13,8 @@ using TVCOM.Model;
 using System.Windows.Controls;
 using Control = TVCOM.View.Control;
 using System.Data.SqlTypes;
+using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace TVCOM.ViewModel
 {
@@ -52,17 +54,31 @@ namespace TVCOM.ViewModel
         public IRegistService _registService;
         public IInsertService _insertService;
         public IReportService _reportService;
-        public IRegistService _AddUserService;
+        public IReportDoljService _reportDoljService;
+        public IReportAllService _reportAllService;
         public ICommand LoginCommand { get; set; }
         public ICommand ReportOpenCommand { get; set; }
+        public ICommand ReportAllOpenCommand { get; set; }
+        public ICommand ReportDoljOpenCommand { get; set; }
 
         public string ErrorMessage { get; set; }
         public ICommand OpenRegisterCommand { get; set; }
         public ICommand RegistCommand { get; set; }
         public ICommand ReportUserCommand { get; set; }
+        public ICommand ReportDoljCommand { get; set; }
+        public ICommand ReportAllCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand MinimizeCommand { get; set; } 
         public ICommand InsertCommand {  get; set; }
+        private int _dolj;
+        public int Dolj
+        {
+            get { return _dolj; }
+            set
+            {
+                _dolj = value;
+            }
+        }
         private string _userName;
         public string UserName
         {
@@ -83,65 +99,55 @@ namespace TVCOM.ViewModel
                 OnPropertyChanged("Password");
             }
         }
-        private string _userNameR;
-        public string UserNameR
+        private string _ruserName;
+        public string RUserName
         {
-            get { return _userNameR; }
+            get { return _ruserName; }
             set
             {
-                _userNameR = value;
-                OnPropertyChanged("UserNameR");
+                _ruserName = value;
+                OnPropertyChanged("RUserName");
             }
         }
 
-        private string _passwordR;
-        public string PasswordR
+        private string _rpassword;
+        public string RPassword
         {
-            get { return _passwordR; }
+            get { return _rpassword; }
             set
             {
-                _passwordR = value;
-                OnPropertyChanged("PasswordR");
+                _rpassword = value;
+                OnPropertyChanged("RPassword");
             }
         }
-        public string _name;
-        public string Name
+        public string _rname;
+        public string RName
         {
-            get { return _name; }
+            get { return _rname; }
             set
             {
-                _name = value;
-                OnPropertyChanged("Name");
+                _rname = value;
+                OnPropertyChanged("RName");
             }
         }
-        public string _loginRed;
-        public string LoginRed
+        public string _rlname;
+        public string RLName
         {
-            get { return _loginRed; }
+            get { return _rlname; }
             set
             {
-                _loginRed = value;
-                OnPropertyChanged("Login");
+                _rlname = value;
+                OnPropertyChanged("RLName");
             }
         }
-        public string _passwordRed;
-        public string PasswordRed
+        public string _rotch;
+        public string ROtch
         {
-            get { return _passwordRed; }
+            get { return _rotch; }
             set
             {
-                _passwordRed = value;
-                OnPropertyChanged("Password");
-            }
-        }
-        public string _nameRed;
-        public string NameRed
-        {
-            get { return _nameRed; }
-            set
-            {
-                _nameRed = value;
-                OnPropertyChanged("Name");
+                _rotch = value;
+                OnPropertyChanged("ROtch");
             }
         }
         private int _year;
@@ -233,7 +239,7 @@ namespace TVCOM.ViewModel
                 OnPropertyChanged("FinDay");
             }
         }
-        public MainWindowViewModel(ILoginService loginService, IRegistService registService, IProverkaService proverkaService, IInsertService insertService, IReportService reportService)
+        public MainWindowViewModel(ILoginService loginService, IRegistService registService, IProverkaService proverkaService, IInsertService insertService, IReportService reportService, IReportAllService reportAllService, IReportDoljService reportDoljService)
         {
             Controls = new ObservableCollection<Control>();
             _loginService = loginService;
@@ -241,6 +247,8 @@ namespace TVCOM.ViewModel
             _registService = registService;
             _insertService = insertService;
             _reportService = reportService;
+            _reportDoljService = reportDoljService;
+            _reportAllService = reportAllService;
             LoginCommand = new RelayCommand(LoginUser);
             OpenRegisterCommand = new RelayCommand(OpenRegister);
             RegistCommand = new RelayCommand(Register);
@@ -249,6 +257,10 @@ namespace TVCOM.ViewModel
             InsertCommand = new RelayCommand(Insert);
             ReportUserCommand = new RelayCommand(ReportUser);
             ReportOpenCommand = new RelayCommand(OpenReportUser);
+            ReportDoljCommand = new RelayCommand(ReportDolj);
+            ReportDoljOpenCommand = new RelayCommand(OpenReportDolj);
+            ReportAllCommand = new RelayCommand(ReportAll);
+            ReportAllOpenCommand = new RelayCommand(OpenReportAll);
         }
         public void LoginUser(object obj)
         {
@@ -260,7 +272,7 @@ namespace TVCOM.ViewModel
                 MainWindowViewModel.ID_author = employeeId.Value;
                 MessageBox.Show($"Пароль верный");
                 MainWindow mainWindow = new MainWindow();
-                MainWindowViewModel viewModel = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService());
+                MainWindowViewModel viewModel = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());
                 viewModel.Controls = this.Controls;
                 mainWindow.Show();
                 Application.Current.Windows[0].Close();
@@ -276,21 +288,22 @@ namespace TVCOM.ViewModel
         {
             Register regist = new Register();
             regist.Show();
+            Application.Current.Windows[0].Close();
         }
         private void Register(object obj)
         {
-            if (UserNameR == null || PasswordR == null || Name == null)
+            if (RUserName == null || RPassword == null || RName == null || RLName == null || ROtch == null)
             {
                 MessageBox.Show("Введите данные");
                 return;
             }
-            if (_proverkaService.ValidateUser(UserNameR))
+            if (_proverkaService.ValidateUser(RUserName))
             {
                 MessageBox.Show("Такой пользователь уже существует");
             }
             else
             {
-                _registService.RegistUser(UserNameR, PasswordR, Name);
+                _registService.RegistUser(RUserName, RPassword, RName, RLName, ROtch, Dolj);
                 MessageBox.Show("Регистрация успешна!");
                 Login login = new Login();
                 login.Show();
@@ -339,11 +352,43 @@ namespace TVCOM.ViewModel
             reportUserWindow.Show();
             Application.Current.Windows[0].Close();
         }
+        private void OpenReportDolj(object obj)
+        {
+            ReportDoljWindow reportDoljWindow = new ReportDoljWindow();
+            reportDoljWindow.Show();
+            Application.Current.Windows[0].Close();
+        }
+        private void OpenReportAll(object obj)
+        {
+            ReportAllWindow reportAllWindow = new ReportAllWindow();
+            reportAllWindow.Show();
+            Application.Current.Windows[0].Close();
+        }
         private void ReportUser(object obj) 
         {
             DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
             DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
             _reportService.ReportUser(ID_author, start, end);
+            MessageBox.Show("Данные сохранены!");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Application.Current.Windows[0].Close();
+        }
+        private void ReportDolj(object obj)
+        {
+            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
+            _reportDoljService.ReportDolj (Dolj, start, end);
+            MessageBox.Show("Данные сохранены!");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Application.Current.Windows[0].Close();
+        }
+        private void ReportAll(object obj)
+        {
+            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
+            _reportAllService.ReportAll(start, end);
             MessageBox.Show("Данные сохранены!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

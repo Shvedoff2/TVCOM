@@ -45,7 +45,7 @@ namespace TVCOM.Model
             using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM Сотрудники WHERE login='{userName}'", conn);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM Сотрудники WHERE Логин='{userName}'", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 return reader.HasRows;
             }
@@ -53,17 +53,17 @@ namespace TVCOM.Model
     }
     public interface IRegistService
     {
-        bool RegistUser(string userName, string password, string name);
+        bool RegistUser(string userName, string password, string name, string lname, string otch, int ID);
     }
 
     public class RegistService : IRegistService
     {
-        public bool RegistUser(string userName, string password, string name)
+        public bool RegistUser(string userName, string password, string name, string lname, string otch, int ID)
         {
             using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"INSERT INTO Сотрудники ([Логин], [Пароль], [Имя], [Фамилия], [Фамилия], [ID_Должности]) VALUES('{userName}', '{password}', '{name}', 'user')", conn);
+                SqlCommand cmd = new SqlCommand($"INSERT INTO Сотрудники ([Имя], [Фамилия], [Отчество], [Логин], [Пароль], [ID_Должности]) VALUES('{name}','{lname}','{otch}','{userName}', '{password}', {ID})", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 return reader.HasRows;
             }
@@ -120,6 +120,111 @@ namespace TVCOM.Model
                 }
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
                 dlg.FileName = "!_ТАБЛИЦА  Режиссеры"; // Имя по умолчанию
+                dlg.DefaultExt = ".xlsx"; // Расширение файла по умолчанию
+                dlg.Filter = "Excel documents (.xlsx)|*.xlsx"; // Фильтр файлов для отображения
+
+                // Показываем диалоговое окно
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Получаем выбранный путь
+                if (result == true)
+                {
+                    // Путь к выбранному файлу
+                    string filename = dlg.FileName;
+
+                    // Здесь вы можете сохранить свой файл по пути, указанному пользователем
+                    // Например, используя EPPlus:
+                    package.SaveAs(new FileInfo(filename));
+                }
+            }
+            return true;
+        }
+    }
+    public interface IReportDoljService
+    {
+        bool ReportDolj(int ID, DateTime start, DateTime end);
+    }
+
+    public class ReportDoljService : IReportDoljService
+    {
+        public bool ReportDolj(int ID, DateTime start, DateTime end)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string path = "E:\\bl\\TVCOM\\TVCOM\\Resources\\DocPattern\\!_ОБЩАЯ_ТАБЛИЦА_Режиссеры.xlsx";
+            FileInfo existingFile = new FileInfo(path);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets["Лист1"];
+
+                // Подключаемся к базе данных и выполняем SQL процедуру
+                using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("EXEC POST_REPORT @ID, @start, @end", conn);
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Заполняем лист данными, начиная с 6 строки
+                    worksheet.Cells["A6"].LoadFromDataTable(dt, false);
+                }
+                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                dlg.FileName = "!__ОБЩАЯ_ТАБЛИЦА Режиссеры"; // Имя по умолчанию
+                dlg.DefaultExt = ".xlsx"; // Расширение файла по умолчанию
+                dlg.Filter = "Excel documents (.xlsx)|*.xlsx"; // Фильтр файлов для отображения
+
+                // Показываем диалоговое окно
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Получаем выбранный путь
+                if (result == true)
+                {
+                    // Путь к выбранному файлу
+                    string filename = dlg.FileName;
+
+                    // Здесь вы можете сохранить свой файл по пути, указанному пользователем
+                    // Например, используя EPPlus:
+                    package.SaveAs(new FileInfo(filename));
+                }
+            }
+            return true;
+        }
+    }
+    public interface IReportAllService
+    {
+        bool ReportAll(DateTime start, DateTime end);
+    }
+
+    public class ReportAllService : IReportAllService
+    {
+        public bool ReportAll(DateTime start, DateTime end)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string path = "E:\\bl\\TVCOM\\TVCOM\\Resources\\DocPattern\\!_ОБЩАЯ_ТАБЛИЦА_Режиссеры.xlsx";
+            FileInfo existingFile = new FileInfo(path);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets["Лист1"];
+
+                // Подключаемся к базе данных и выполняем SQL процедуру
+                using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("EXEC ALL_REPORT @start, @end", conn);
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // Заполняем лист данными, начиная с 6 строки
+                    worksheet.Cells["A6"].LoadFromDataTable(dt, false);
+                }
+                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                dlg.FileName = "!_ОБЩАЯ_ТАБЛИЦА Режиссеры"; // Имя по умолчанию
                 dlg.DefaultExt = ".xlsx"; // Расширение файла по умолчанию
                 dlg.Filter = "Excel documents (.xlsx)|*.xlsx"; // Фильтр файлов для отображения
 

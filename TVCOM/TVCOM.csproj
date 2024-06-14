@@ -142,6 +142,12 @@
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ReportAllWindow.xaml.cs">
+      <DependentUpon>ReportAllWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReportDoljWindow.xaml.cs">
+      <DependentUpon>ReportDoljWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ReportUserWindow.xaml.cs">
       <DependentUpon>ReportUserWindow.xaml</DependentUpon>
     </Compile>
@@ -178,6 +184,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ReportAllWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReportDoljWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ReportUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,7 +220,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\DocPattern\!_ОБЩАЯ_ТАБЛИЦА  Режиссеры.xlsx" />
+    <None Include="Resources\DocPattern\!_ОБЩАЯ_ТАБЛИЦА_Режиссеры.xlsx" />
     <None Include="Resources\DocPattern\!_ТАБЛИЦА_Режиссеры.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

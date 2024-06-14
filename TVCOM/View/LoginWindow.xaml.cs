@@ -25,7 +25,7 @@ namespace TVCOM.View
         public Login()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService());
+            DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());
         }
     }
 }

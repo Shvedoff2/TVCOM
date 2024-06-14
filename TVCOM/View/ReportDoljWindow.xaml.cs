@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,17 +18,28 @@ using TVCOM.ViewModel;
 
 namespace TVCOM.View
 {
-    /// <summary>
-    /// Логика взаимодействия для ReportUserWindow.xaml
-    /// </summary>
-    public partial class ReportUserWindow : Window
+    public partial class ReportDoljWindow : Window
     {
-        public ReportUserWindow()
+        public ReportDoljWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());
+            DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());
         }
-
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=Тивиком;Integrated Security=True"))
+            {
+                conn.Open();
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Должности", conn))
+                {
+                    DataTable dt = new DataTable();
+                    dataAdapter.Fill(dt);
+                    Doljnost.ItemsSource = dt.DefaultView;
+                    Doljnost.DisplayMemberPath = "Название";
+                    Doljnost.SelectedValuePath = "ID_Должности";
+                }
+            }
+        }
         private void StartMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = (ComboBoxItem)StartMonth.SelectedItem;

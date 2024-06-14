@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TVCOM.View"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="385"
+        Title="Register" Height="650" Width="500"
         ResizeMode="NoResize" WindowStyle="None" 
         Background="Transparent" AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png" >
+        WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png" Loaded="Window_Loaded"
+        xmlns:viewmodel="clr-namespace:TVCOM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -17,5 +19,40 @@
         <Border Background="#FFFFFF" CornerRadius="10,10,0,0"/>
         <Border Background="#D00A0A" CornerRadius="0,0,10,10" Grid.Row="1"/>
         <Label Content="Регистрация" Style="{DynamicResource labelLR}" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="300" Margin="0,0,0,0">
+            <TextBlock Text="Имя" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,15,0,0"/>
+            <TextBox x:Name="txtName" Style="{DynamicResource CtextBox}" Margin="0,5,0,0" Padding="20,0,0,0" Text="{Binding RName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/Images/user-icon.png" Stretch="None" AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Фамилия" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,15,0,0"/>
+            <TextBox x:Name="txtLName" Style="{DynamicResource CtextBox}" Margin="0,5,0,0" Padding="20,0,0,0" Text="{Binding RLName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/Images/user-icon.png" Stretch="None" AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Отчество" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,15,0,0"/>
+            <TextBox x:Name="txtOtch" Style="{DynamicResource CtextBox}" Margin="0,5,0,0" Padding="20,0,0,0" Text="{Binding ROtch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/Images/user-icon.png" Stretch="None" AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Логин" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,15,0,0"/>
+            <TextBox x:Name="textUser" Padding="20,0,0,0" Margin="0,5,0,0" Style="{DynamicResource CtextBox}" Text="{Binding RUserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/Images/user-icon.png" Stretch="None" AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Пароль" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,15,0,0"/>
+            <TextBox x:Name="txtPass" Style="{DynamicResource CtextBox}" Margin="0,5,0,0" Padding="20,0,0,0" Text="{Binding RPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/Images/key-icon.png" Stretch="None" AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Text="Должность" Foreground="White" FontSize="14" FontFamily="{DynamicResource Inter}" Margin="0,20,0,0"/>
+            <ComboBox x:Name="Dolj" Style="{DynamicResource Combo}" Margin="0,5,0,0" SelectedValue="{Binding Dolj}"/>
+            <Button Grid.Row="1" Height="75" Width="300" Content="Зарегистрироваться" Margin="0,50,0,0" Command="{Binding RegistCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>

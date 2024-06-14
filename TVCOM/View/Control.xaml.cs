@@ -40,7 +40,7 @@ namespace TVCOM.View
         public Control()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService());
+            this.DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

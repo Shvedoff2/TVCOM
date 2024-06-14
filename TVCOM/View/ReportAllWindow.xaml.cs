@@ -17,11 +17,11 @@ using TVCOM.ViewModel;
 namespace TVCOM.View
 {
     /// <summary>
-    /// Логика взаимодействия для ReportUserWindow.xaml
+    /// Логика взаимодействия для ReportAllWindow.xaml
     /// </summary>
-    public partial class ReportUserWindow : Window
+    public partial class ReportAllWindow : Window
     {
-        public ReportUserWindow()
+        public ReportAllWindow()
         {
             InitializeComponent();
             this.DataContext = new MainWindowViewModel(new LoginService(), new RegistService(), new ProverkaService(), new InsertService(), new ReportService(), new ReportAllService(), new ReportDoljService());

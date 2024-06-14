@@ -34,7 +34,8 @@
                         </Border>
                         <Border Grid.Column="1" Background="#B00A0A" Height="300">
                             <StackPanel VerticalAlignment="Center">
-                                <Button Height="60" Width="240" Margin="0,0,0,20" Content="Вывести общий отчёт"/>
+                                <Button Height="60" Width="240" Margin="0,0,0,20" Content="Вывести общий отчёт" Command="{Binding ReportAllOpenCommand}"/>
+                                <Button Height="60" Width="240" Margin="0,0,0,20" Content="Вывести должностной отчёт" Command="{Binding ReportDoljOpenCommand}" FontSize="14"/>
                                 <Button Height="60" Width="240" Content="Вывести личный отчёт" Command="{Binding ReportOpenCommand}"/>
                             </StackPanel>
                         </Border>

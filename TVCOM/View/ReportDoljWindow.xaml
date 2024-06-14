@@ -1,16 +1,16 @@
-﻿<Window x:Class="TVCOM.View.ReportUserWindow"
+﻿<Window x:Class="TVCOM.View.ReportDoljWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TVCOM.View"
         mc:Ignorable="d"
-        Title="ReportUserWindow" Height="450" Width="385"
+        Title="ReportAllWindow" Height="450" Width="385"
         ResizeMode="NoResize" WindowStyle="None" 
         Background="Transparent" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen" Icon="/Resources/Images/logoIcon.png"        
         xmlns:viewmodel="clr-namespace:TVCOM.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -76,7 +76,9 @@
                     <ComboBoxItem Content="2030"/>
                 </ComboBox>
             </StackPanel>
-            <Button Content="Вывести личный отчёт" Width="300" Height="60" Command="{Binding ReportUserCommand}"/>
+            <Label Content="Должность" FontFamily="{DynamicResource Inter}" Foreground="White" FontSize="15"/>
+            <ComboBox x:Name="Doljnost" Style="{DynamicResource Combo}" Margin="0,0,0,20" SelectedValue="{Binding Dolj}"/>
+            <Button Content="Вывести общий отчёт" Width="300" Height="60" Command="{Binding ReportDoljCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
