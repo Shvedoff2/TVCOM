@@ -133,7 +133,6 @@ namespace TVCOM.Model
                     string filename = dlg.FileName;
 
                     // Здесь вы можете сохранить свой файл по пути, указанному пользователем
-                    // Например, используя EPPlus:
                     package.SaveAs(new FileInfo(filename));
                 }
             }

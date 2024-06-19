@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using System.Windows;
-using TVCOM.View;
-using TVCOM.Model;
-using System.Windows.Controls;
-using Control = TVCOM.View.Control;
-using System.Data.SqlTypes;
+using System.Windows.Input;
 using System.Xml.Linq;
-using System.Text.RegularExpressions;
+using TVCOM.Model;
+using TVCOM.View;
+using Control = TVCOM.View.Control;
 
 namespace TVCOM.ViewModel
 {
@@ -68,8 +60,8 @@ namespace TVCOM.ViewModel
         public ICommand ReportDoljCommand { get; set; }
         public ICommand ReportAllCommand { get; set; }
         public ICommand CloseCommand { get; set; }
-        public ICommand MinimizeCommand { get; set; } 
-        public ICommand InsertCommand {  get; set; }
+        public ICommand MinimizeCommand { get; set; }
+        public ICommand InsertCommand { get; set; }
         private int _dolj;
         public int Dolj
         {
@@ -283,7 +275,6 @@ namespace TVCOM.ViewModel
                 OnPropertyChanged("ErrorMessage");
             }
         }
-
         private void OpenRegister(object obj)
         {
             Register regist = new Register();
@@ -292,7 +283,7 @@ namespace TVCOM.ViewModel
         }
         private void Register(object obj)
         {
-            if (RUserName == null || RPassword == null || RName == null || RLName == null || ROtch == null)
+            if (RUserName == null || RPassword == null || RName == null || RLName == null || ROtch == null || Dolj == null)
             {
                 MessageBox.Show("Введите данные");
                 return;
@@ -318,8 +309,16 @@ namespace TVCOM.ViewModel
         {
             Application.Current.Windows[0].WindowState = WindowState.Minimized;
         }
-        private void Insert(object obj) 
+        private void Insert(object obj)
         {
+            foreach (Control control in Controls)
+            {
+                if (control.ComboForms.SelectedValue == null)
+                {
+                    MessageBox.Show($"Ошибка, у {control.FileNameLabel.Content} не выбран тип формы");
+                    return;
+                }
+            }
             foreach (Control control in Controls)
             {
                 int min = 1, hud = 1, ad = 1, cost = 1;
@@ -341,8 +340,16 @@ namespace TVCOM.ViewModel
                 {
                     name += " (числ)";
                 }
-                DateTime Date = new DateTime(Year, _selectedMonth, Day);
-                _insertService.InsertUser(name, Date, form, MainWindowViewModel.ID_author, min, hud, ad, cost);
+                try
+                {
+                    DateTime Date = new DateTime(Year, SelectedMonth, Day);
+                    _insertService.InsertUser(name, Date, form, MainWindowViewModel.ID_author, min, hud, ad, cost);
+                }
+                catch
+                {
+                    MessageBox.Show($"Ошибка, не выбрана дата");
+                    return;
+                }
             }
             MessageBox.Show("Ввод данных прошёл успешно!");
         }
@@ -364,11 +371,19 @@ namespace TVCOM.ViewModel
             reportAllWindow.Show();
             Application.Current.Windows[0].Close();
         }
-        private void ReportUser(object obj) 
+        private void ReportUser(object obj)
         {
-            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
-            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
-            _reportService.ReportUser(ID_author, start, end);
+            try
+            {
+                DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+                DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
+                _reportService.ReportUser(ID_author, start, end);
+            }
+            catch
+            {
+                MessageBox.Show($"Ошибка, не выбрана дата");
+                return;
+            }
             MessageBox.Show("Данные сохранены!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -376,9 +391,17 @@ namespace TVCOM.ViewModel
         }
         private void ReportDolj(object obj)
         {
-            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
-            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
-            _reportDoljService.ReportDolj (Dolj, start, end);
+            try
+            {
+                DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+                DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
+                _reportDoljService.ReportDolj(Dolj, start, end);
+            }
+            catch
+            {
+                MessageBox.Show($"Ошибка, не выбрана дата или должность");
+                return;
+            }
             MessageBox.Show("Данные сохранены!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -386,9 +409,17 @@ namespace TVCOM.ViewModel
         }
         private void ReportAll(object obj)
         {
-            DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
-            DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
-            _reportAllService.ReportAll(start, end);
+            try
+            {
+                DateTime start = new DateTime(StartYear, _selectedStartMonth, FinDay);
+                DateTime end = new DateTime(FinYear, _selectedFinMonth, FinDay);
+                _reportAllService.ReportAll(start, end);
+            }
+            catch
+            {
+                MessageBox.Show($"Ошибка, не выбрана дата");
+                return;
+            }
             MessageBox.Show("Данные сохранены!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
